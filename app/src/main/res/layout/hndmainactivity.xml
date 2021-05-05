@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HndMainActivity">
+
+    <EditText
+        android:id="@+id/PlyerName"
+        android:layout_width="407dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="5dp"
+        android:hint="@string/EnterPlayerName"
+
+        android:textSize="@dimen/PlayerNameSize"
+        app:layout_constraintBottom_toTopOf="@+id/AddPlayer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/Title"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="54dp"-->
+<!--        android:text="@string/TitleText"-->
+<!--        android:textSize="@dimen/TitleSize"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/PlyerName"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.0" />-->
+
+    <ListView
+        android:id="@+id/_dynamic"
+        android:layout_width="406dp"
+        android:layout_height="282dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/AddPlayer"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:onClick="AddPlayer"
+        android:text="إضافة"
+        android:textSize="@dimen/PlayerNameSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PlyerName" />
+
+    <include
+        android:id="@+id/content"
+        layout="@layout/playerinfo"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/PlyerName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Calc"
+        android:layout_width="407dp"
+        android:layout_height="58dp"
+        android:text="إجمع"
+        android:textSize="@dimen/TitleSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_dynamic" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="الإسم              الناتج      اللعبة           الأخيرة"
+        android:textSize="@dimen/PlayerNameSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AddPlayer" />
+</androidx.constraintlayout.widget.ConstraintLayout>

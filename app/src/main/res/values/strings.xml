@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">HindCalc</string>
+    <string name="EnterPlayerName">أدخل إسم اللاعب</string>
+    <string name="TitleText">حاسبة لعبة الهاند</string>
+    <string name="playerresult">أدخل النتيجة</string>
+</resources>
