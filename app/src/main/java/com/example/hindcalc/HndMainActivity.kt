@@ -36,9 +36,10 @@ private lateinit var binding:HndmainactivityBinding
         ArrAdpt=SimpleCursorAdapter(this,R.layout.playerinfo,cursor,fromcursor,to,CursorAdapter.NO_SELECTION)
         binding.Dynamic.adapter=ArrAdpt
         ArrAdpt.notifyDataSetChanged()
-findViewById<Button>(R.id.Calc).setOnClickListener(){
-var mylist:ListView=ListView(applicationContext)
-    mylist=findViewById(R.id._dynamic) as ListView
+        var mylist:ListView=ListView(applicationContext)
+        mylist=findViewById(R.id._dynamic) as ListView
+
+        findViewById<Button>(R.id.Calc).setOnClickListener(){
     //for (i in [0..mylist])
 
     //Toast.makeText(applicationContext, mylist.get(0).id.toString(),Toast.LENGTH_LONG)
@@ -64,6 +65,33 @@ if(EDT.text.isNotEmpty()) {
     }
 }
 
+        findViewById<Button>(R.id.newGame).setOnClickListener{
+            //Toast.makeText(this, "new game", Toast.LENGTH_LONG).show()
+            for(ET:View in mylist) {
+                //var ET:View=Etv //mylist.getChildAt(1)// as ViewGroup
+                var pdname: TextView = ET.findViewById<TextView>(R.id.pname)
+                var EDT: EditText = ET.findViewById<EditText>(R.id.PlayerScore)
+                //var TxtV: TextView = ET.findViewById<TextView>(R.id.Sumtxt)
+                //Log.d("tag1","myString: ${EDT.text.toString()}")
+                //ET.findViewById<TextView>(R.id.FinalScore).setText(EDT.text.toString())
+
+                var nScore: Int
+                var fScor: Int
+                //if(EDT.text.isNotEmpty()) {
+                  //  nScore = EDT.text.toString().toInt() + TxtV.text.toString().toInt()
+                    //ET.findViewById<TextView>(R.id.Sumtxt).setText(nScore.toString())
+                   // ET.findViewById<TextView>(R.id.FinalScore).setText(EDT.text.toString())
+
+                    sqlHelper.UpdatePlayerInfo(pdname.text.toString(),0, 0)
+                ArrAdpt.changeCursor(cursor)
+                binding.Dynamic.adapter=ArrAdpt
+                ArrAdpt.notifyDataSetChanged()
+                    EDT.setText("")
+                //}
+            }
+
+
+        }
 
 
 
@@ -83,7 +111,7 @@ if(EDT.text.isNotEmpty()) {
        // ArrAdpt.notifyDataSetChanged()
 
         //----------------
-        sqlHelper= HndSqlHelper(applicationContext)
+       // sqlHelper= HndSqlHelper(applicationContext)
         val res=sqlHelper.AddPlayerInfo(binding.PlyerName.text.toString(),0,0)
         cursor=sqlHelper.getPlayers()
         if(cursor==null){
@@ -94,5 +122,9 @@ if(EDT.text.isNotEmpty()) {
             binding.Dynamic.adapter=ArrAdpt
             ArrAdpt.notifyDataSetChanged()
         }
+        binding.PlyerName.setText("")
+    }
+    fun newGame(){
+
     }
 }

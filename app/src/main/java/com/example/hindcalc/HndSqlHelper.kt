@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import android.widget.Toast
 import androidx.annotation.ContentView
 
 class HndSqlHelper(context: Context): SQLiteOpenHelper(context,"HndDataBase",null,1) {
@@ -60,6 +61,7 @@ return a
     }
     fun UpdatePlayerInfo(name:String,GScore:Int,SumScore:Int)
     {
+        //Toast.makeText(this, "update", Toast.LENGTH_SHORT).show()
         val db=this.writableDatabase
         val v=ContentValues().apply {
             put(Player_Name,name)
@@ -68,5 +70,11 @@ return a
             put(Game_Turn,1)
         }
         val a=db.update(Table_Name_HndInfo,v, "${Player_Name} = '${name}'",null)
+        Log.d("tag1","update:"+a.toString())
+    }
+    fun clearTable()
+    {
+        val db=this.writableDatabase
+
     }
 }
