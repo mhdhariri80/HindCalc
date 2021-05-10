@@ -54,15 +54,21 @@ private lateinit var binding:HndmainactivityBinding
 
         var nScore: Int
         var fScor: Int
-if(EDT.text.isNotEmpty()) {
-    nScore = EDT.text.toString().toInt() + TxtV.text.toString().toInt()
-    ET.findViewById<TextView>(R.id.Sumtxt).setText(nScore.toString())
-    ET.findViewById<TextView>(R.id.FinalScore).setText(EDT.text.toString())
+        try {
+            if (EDT.text.isNotEmpty()) {
+                nScore = EDT.text.toString().toInt() + TxtV.text.toString().toInt()
+                ET.findViewById<TextView>(R.id.Sumtxt).setText(nScore.toString())
+                ET.findViewById<TextView>(R.id.FinalScore).setText(EDT.text.toString())
 
-    sqlHelper.UpdatePlayerInfo(pdname.text.toString(), EDT.text.toString().toInt(), nScore)
-    EDT.setText("")
-}
+                sqlHelper.UpdatePlayerInfo(pdname.text.toString(), EDT.text.toString().toInt(), nScore)
+                EDT.setText("")
+            }
+        }catch(e:Exception){
+            Toast.makeText(this, "Error: ${e.toString()}", Toast.LENGTH_LONG).show()
+        }
+
     }
+
 }
 
         findViewById<Button>(R.id.newGame).setOnClickListener{
