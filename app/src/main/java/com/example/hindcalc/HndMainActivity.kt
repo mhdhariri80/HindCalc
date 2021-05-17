@@ -25,7 +25,7 @@ private lateinit var binding:HndmainactivityBinding
  val fromcursor: kotlin.Array<String> = arrayOf(HndSqlHelper.Player_Name,
         HndSqlHelper.Player_Score,HndSqlHelper.Player_Final_Score)
     val to: IntArray =
-            intArrayOf(R.id.pname, R.id.Sumtxt,R.id.FinalScore)
+            intArrayOf(R.id.pname, R.id.FinalScore, R.id.Sumtxt)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = HndmainactivityBinding.inflate(layoutInflater)
@@ -33,6 +33,10 @@ private lateinit var binding:HndmainactivityBinding
         //ArrAdpt= ArrayAdapter(this, R.layout.playerinfo, R.id.pname, arrlist)
         sqlHelper= HndSqlHelper(applicationContext)
         cursor=sqlHelper.getPlayers()
+//            .readableDatabase.query(
+//            HndSqlHelper.Table_Name_HndInfo,null,null,null,null,null,
+//            HndSqlHelper.Player_Final_Score +" ASC")
+
         ArrAdpt=SimpleCursorAdapter(this,R.layout.playerinfo,cursor,fromcursor,to,CursorAdapter.NO_SELECTION)
         binding.Dynamic.adapter=ArrAdpt
         ArrAdpt.notifyDataSetChanged()
@@ -60,7 +64,14 @@ private lateinit var binding:HndmainactivityBinding
                 ET.findViewById<TextView>(R.id.Sumtxt).setText(nScore.toString())
                 ET.findViewById<TextView>(R.id.FinalScore).setText(EDT.text.toString())
 
-                sqlHelper.UpdatePlayerInfo(pdname.text.toString(), EDT.text.toString().toInt(), nScore)
+                cursor=sqlHelper.UpdatePlayerInfo(pdname.text.toString(), EDT.text.toString().toInt(), nScore)
+//                cursor=sqlHelper.readableDatabase.query(
+//                    HndSqlHelper.Table_Name_HndInfo,null,null,null,null,null,
+//                    HndSqlHelper.Player_Score +" ASC")
+                //cursor=sqlHelper.getPlayers()
+                ArrAdpt.changeCursor(cursor)
+                //binding.Dynamic.adapter=ArrAdpt
+                ArrAdpt.notifyDataSetChanged()
                 EDT.setText("")
             }
         }catch(e:Exception){
@@ -88,9 +99,10 @@ private lateinit var binding:HndmainactivityBinding
                     //ET.findViewById<TextView>(R.id.Sumtxt).setText(nScore.toString())
                    // ET.findViewById<TextView>(R.id.FinalScore).setText(EDT.text.toString())
 
-                    sqlHelper.UpdatePlayerInfo(pdname.text.toString(),0, 0)
+                cursor=sqlHelper.UpdatePlayerInfo(pdname.text.toString(),0, 0)
+                //cursor= sqlHelper.getPlayers()
                 ArrAdpt.changeCursor(cursor)
-                binding.Dynamic.adapter=ArrAdpt
+               // binding.Dynamic.adapter=ArrAdpt
                 ArrAdpt.notifyDataSetChanged()
                     EDT.setText("")
                 //}

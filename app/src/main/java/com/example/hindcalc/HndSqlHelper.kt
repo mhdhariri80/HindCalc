@@ -5,9 +5,11 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.os.AsyncTask
 import android.util.Log
 import android.widget.Toast
 import androidx.annotation.ContentView
+import kotlin.concurrent.thread
 
 class HndSqlHelper(context: Context): SQLiteOpenHelper(context,"HndDataBase",null,1) {
 
@@ -51,30 +53,37 @@ class HndSqlHelper(context: Context): SQLiteOpenHelper(context,"HndDataBase",nul
     }
 
         var a =db.insert(Table_Name_HndInfo,null,v)
-        Log.d("tag1","Insert:"+a.toString())
+        //Log.d("tag1","Insert:"+a.toString())
 return a
     }
 
     fun getPlayers(): Cursor? {
         val db = this.readableDatabase
-        return  db.query(Table_Name_HndInfo,null,null,null,null,null,null)
+        return  db.query(Table_Name_HndInfo,null,null,null,null,null, Player_Final_Score+" ASC")
     }
-    fun UpdatePlayerInfo(name:String,GScore:Int,SumScore:Int)
+    fun UpdatePlayerInfo(name:String,GScore:Int,SumScore:Int):Cursor?
     {
         //Toast.makeText(this, "update", Toast.LENGTH_SHORT).show()
-        val db=this.writableDatabase
+        var db=this.writableDatabase
         val v=ContentValues().apply {
             put(Player_Name,name)
             put(Player_Score,GScore)
             put(Player_Final_Score,SumScore)
             put(Game_Turn,1)
         }
-        val a=db.update(Table_Name_HndInfo,v, "${Player_Name} = '${name}'",null)
-        Log.d("tag1","update:"+a.toString())
+        var a=db.update(Table_Name_HndInfo,v, "${Player_Name} = '${name}'",null)
+        //return null
+        Log.d("tag1","update: ${name}"+a.toString())
+        return getPlayers()
+        //db.close()
+//Thread.sleep(10000)
+        //db=this.readableDatabase
+        //return db.query(Table_Name_HndInfo,null,null,null,null,null,Player_Score+" ASC")
+
     }
     fun clearTable()
     {
-        val db=this.writableDatabase
+
 
     }
 }
