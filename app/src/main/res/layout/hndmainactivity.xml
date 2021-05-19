@@ -19,7 +19,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:inputType="textPersonName" />
 
 <!--    <TextView-->
 <!--        android:id="@+id/Title"-->
@@ -80,7 +81,7 @@
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="الإسم              الناتج      اللعبة           الأخيرة"
+        android:text="الإسم                  الناتج      اللعبة      الأخيرة"
         android:textSize="@dimen/PlayerNameSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,40 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/FinalScore"
-        android:layout_width="0dp"
+        android:layout_width="82dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:text="0"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textSize="@dimen/PlayerNameSize" />
 
     <EditText
         android:id="@+id/PlayerScore"
-        android:layout_width="0dp"
+        android:layout_width="104dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:ems="10"
         android:hint="@string/playerresult"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
-        android:textAlignment="viewEnd" />
+        android:textAlignment="viewEnd"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/Sumtxt"
-        android:layout_width="0dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:text="0"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textSize="@dimen/PlayerNameSize" />
 
     <TextView
         android:id="@+id/pname"
-        android:layout_width="0dp"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textAlignment="viewEnd" />
+        android:textAlignment="viewEnd"
+        android:textSize="@dimen/PlayerNameSize"
+        android:textStyle="bold" />
 
 </LinearLayout>
