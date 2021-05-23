@@ -4,35 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/PHistory"
-        android:layout_width="53dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="..." />
-
     <TextView
         android:id="@+id/FinalScore"
-        android:layout_width="39dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:text="0"
         android:textAlignment="center"
         android:textSize="@dimen/PlayerNameSize" />
 
-    <EditText
-        android:id="@+id/PlayerScore"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/playerresult"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:textAlignment="viewEnd"
-        android:textSize="18sp" />
-
     <TextView
         android:id="@+id/Sumtxt"
-        android:layout_width="80dp"
+        android:layout_width="177dp"
         android:layout_height="wrap_content"
         android:text="0"
         android:textAlignment="center"
@@ -40,7 +22,7 @@
 
     <TextView
         android:id="@+id/pname"
-        android:layout_width="140dp"
+        android:layout_width="61dp"
         android:layout_height="wrap_content"
         android:textAlignment="viewEnd"
         android:textSize="@dimen/PlayerNameSize"
